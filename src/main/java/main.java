@@ -10,8 +10,9 @@ public class main {
 
         VirtualMemory vm = new VirtualMemory();
         String page_number = vm.GetPageNumber(30338);
-        System.out.println(page_number);
-        vm.GetFrameNumber(page_number);
+        System.out.println("PAGE NUMBER: " + page_number);
+        String frame_number = vm.GetFrameNumber(page_number);
+        System.out.println("FRAME NUMBER: " + frame_number);
 
     }
 

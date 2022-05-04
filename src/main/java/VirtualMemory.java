@@ -16,6 +16,8 @@ public class VirtualMemory {
         PageTable = new ArrayList<String>();
         PhysicalMemoryRAM = new ArrayList<String>();
 
+        TLB.add("10000010,24");
+
     }
 
 
@@ -32,15 +34,19 @@ public class VirtualMemory {
     }
 
     public Boolean PageIsInTLB(String _pageNumber) {
-        if (TLB.contains(_pageNumber)) {
-            return true;
+        for (String tlb_item : TLB) {
+            if (tlb_item.contains(_pageNumber)) {
+                return true;
+            }
         }
         return false;
     }
 
-    public Boolean PageIsInPageTableRAM(String _page) {
-        if (PhysicalMemoryRAM.contains(_page)) {
-            return true;
+    public Boolean PageIsInPageTableRAM(String _pageNumber) {
+        for (String page_table_ram_item : TLB) {
+            if (page_table_ram_item.contains(_pageNumber)) {
+                return true;
+            }
         }
         return false;
     }
@@ -49,10 +55,12 @@ public class VirtualMemory {
 
         if (PageIsInTLB(_pageNumber)) {
 
+            System.out.println(_pageNumber + " is in TLB");
             return GetFrameNumberFromTLB(_pageNumber);
 
         }else if (PageIsInPageTableRAM(_pageNumber)) {
 
+            System.out.println(_pageNumber + " is in Page Table RAM");
             return GetFrameNumberFromPageTable(_pageNumber);
 
         }else {

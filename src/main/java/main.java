@@ -6,7 +6,10 @@ public class main {
     public static void main(String[] args) throws IOException {
 
         MemoryManagement vm = new MemoryManagement();
-        vm.GetFrameNumber("11100101");
+        vm.StartSimulation();
+
+        //vm.GetFrameNumber("00000010");
+
         /*
         String page_number = vm.GetPageNumber(57566);
         System.out.println("Page Number      : " +  page_number);
